@@ -4,7 +4,7 @@ require './game.rb'
 InvalidTokenError = Class.new(Exception)
 
 post '/' do
-  raise(InvalidTokenError) unless params[:token] == ENV['SLACK_TOKEN']
+  # raise(InvalidTokenError) unless params[:token] == ENV['SLACK_TOKEN']
   user = params.fetch('user_name')
   text = params.fetch('text').strip
 
@@ -15,7 +15,7 @@ post '/' do
     <<-TEXT
       The next Hey! event will be held on the 20th May from 7:30pm at The Belgrave in central Leeds.
 
-      Hopefully see you then #{user}!
+      Hopefully see you then #{user} and you have a token of ${params[:token]}!
 
       http://hey.wearestac.com/
     TEXT
