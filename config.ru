@@ -5,7 +5,6 @@ InvalidTokenError = Class.new(Exception)
 
 post '/' do
   raise(InvalidTokenError) unless params[:token] == ENV['SLACK_TOKEN']
-  # token = params[:token]
   user = params.fetch('user_name')
   text = params.fetch('text').strip
 
