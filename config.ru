@@ -2,6 +2,13 @@ require 'sinatra'
 
 InvalidTokenError = Class.new(Exception)
 
+get '/' do
+    <<-TEXT
+This is a get example
+TEXT
+
+end
+
 post '/' do
   raise(InvalidTokenError) unless params[:token] == ENV['SLACK_TOKEN']
 
