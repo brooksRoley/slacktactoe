@@ -3,12 +3,6 @@ require './game.rb'
 
 InvalidTokenError = Class.new(Exception)
 
-get '/' do
-    <<-TEXT
-      This is a get example
-    TEXT
-end
-
 post '/' do
   # raise(InvalidTokenError) unless params[:token] ==d ENV['SLACK_TOKEN']
   token = params[:token]
@@ -16,7 +10,6 @@ post '/' do
   text = params.fetch('text').strip
 
   say()
-  "this is a sample to see if I can print #{token} here"
 
   case text
 
