@@ -1,5 +1,5 @@
 require 'sinatra'
-require '/game'
+require './game.rb'
 
 InvalidTokenError = Class.new(Exception)
 
