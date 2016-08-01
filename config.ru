@@ -1,13 +1,18 @@
 require 'sinatra'
 require './game.rb'
 
-board = ["_","_","_","_","_","_","_","_","_"]
+
+game = {
+  "player1": "",
+  "player2": "",
+  "board": ["_","_","_","_","_","_","_","_","_"]
+}
 
 
 InvalidTokenError = Class.new(Exception)
 get '/' do
     <<-TEXT
-      This is a sample get route that I will use to test some variables, dependencies, etc.
+      This is a sample get route that I will use to test some variables, dependencies, etc. \n
       So, we need an ENV property for SLACK_TOKEN -> #{ENV['SLACK_TOKEN']}
       We need a parameter value of the token #{params[:token]}
     TEXT
