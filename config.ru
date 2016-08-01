@@ -4,12 +4,10 @@ require './game.rb'
 InvalidTokenError = Class.new(Exception)
 
 post '/' do
-  # raise(InvalidTokenError) unless params[:token] ==d ENV['SLACK_TOKEN']
-  token = params[:token]
+  raise(InvalidTokenError) unless params[:token] == ENV['SLACK_TOKEN']
+  # token = params[:token]
   user = params.fetch('user_name')
   text = params.fetch('text').strip
-
-  say()
 
   case text
 
@@ -25,7 +23,7 @@ post '/' do
 
   else
 
-    'Unknown command :cry:'
+    'Unknown command :cry:. Please type "/slacktactoe help" for more info.'
 
   end
 end
