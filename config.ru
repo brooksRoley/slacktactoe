@@ -23,13 +23,11 @@ end
 
 post '/' do
   token = params.fetch('token')
-  puts "Token stored + #{ENV['SLACK_TOKEN']}"
-  puts "Token passed #{token}"
   user = params.fetch('user_name')
   text = params.fetch('text').strip.split(" ")
   command = text[0]
   # arguement = text[1]
-  # raise(InvalidTokenError) unless token == ENV['SLACK_TOKEN']
+  raise(InvalidTokenError) unless token == ENV['SLACK_TOKEN']
 
   case command
 
@@ -38,7 +36,6 @@ post '/' do
     # current_game = Game.new(user, opponent)
     <<-TEXT
       Hi there, #{user}, you have chosen to create a new game against #{opponent}!
-      Testing token passed #{token} stored #{ENV['SLACK_TOKEN']}
     TEXT
 
   when 'display'
