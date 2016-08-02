@@ -5,7 +5,7 @@ class Game
   def initialize(player1, player2)
     @player1  = player1
     @player2  = player2
-    @board = ["_","_","_","_","_","_","_","_","_"]
+    @board = ["__","__","__","__","__","__","__","__","__"]
   end
 end
 current_game = Game.new("me", "you")
@@ -50,7 +50,7 @@ post '/' do
       opponent = text[1]
       current_game = Game.new(user, opponent)
       <<-TEXT
-        Hi #{user}, you have chosen to create a new game against #{opponent}! \n
+        Hi #{user}, you have chosen to create a new game against #{current_game.opponent}! \n
         Let's begin. \n
 
         [  __    __    __  ]\n
