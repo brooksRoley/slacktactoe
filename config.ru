@@ -22,7 +22,8 @@ post '/' do
   user = params.fetch('user_name')
   text = params.fetch('text').strip
   token = params.fetch('token')
-  # raise(InvalidTokenError) unless token == ENV['SLACK_TOKEN']
+  raise(InvalidTokenError) unless token == ENV['SLACK_TOKEN']
+
   case text
 
   when 'create'
@@ -33,7 +34,8 @@ post '/' do
 
   when 'display'
     board = game["board"]
-    puts "LOGS: #{board}"
+    board = board || [1,2,3]
+    # puts "LOGS: #{board}"
       # {board[0]}  |  #{board[1]}  |  #{board[2]}
       # {board[3]}  |  #{board[4]}  |  #{board[5]}
       # {board[6]}  |  #{board[7]}  |  #{board[8]}
