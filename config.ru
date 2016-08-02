@@ -21,7 +21,9 @@ post '/' do
   text = params.fetch('text').strip
   token = params.fetch('token')
   # raise(InvalidTokenError) unless token == ENV['SLACK_TOKEN']
-  body = "this is a test"
+  body = {
+    "this is a test": "to json"
+  }
   case text
 
   when 'create'
@@ -57,7 +59,7 @@ post '/' do
     'Unknown command :cry:. Please type "/slacktactoe help" for more info.'
   end
 
-  body
+  body.to_json
 end
 
 
