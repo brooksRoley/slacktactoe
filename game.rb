@@ -47,11 +47,12 @@ def check_win(board, turn)
   end
 end
 
-board.each_with_index do |x, i|
-  square = get_square()
-  mark(board, square, i)
-  draw_board()
-  if(check_win(board, i))
-    # sys.exit(0)
-  end
-end
+
+# board.each_with_index do |x, i|
+#   square = get_square()
+#   mark(board, square, i)
+#   draw_board()
+#   if(check_win(board, i))
+#     # sys.exit(0)
+#   end
+# end
