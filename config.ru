@@ -12,7 +12,6 @@ game = {
 InvalidTokenError = Class.new(Exception)
 
 get '/' do
-    # puts "[LOG] #{params}"
     # token = params.fetch('token')
     <<-TEXT
       This is a sample get route that I will use to test some variables, dependencies, etc. \n
@@ -27,16 +26,18 @@ post '/' do
   user = params.fetch('user_name')
   text = params.fetch('text').strip
   token = params.fetch('token')
-
+  puts "Token: #{token}"
   case text
 
   when 'create'
 
     <<-TEXT
+      Token: #{token} \n
       Hi there, #{user}, you have chosen to create a new game against ___!
     TEXT
 
   when 'display'
+    board = "Get the board somehow. Persist."
     <<-TEXT
       The current state of your board is #{board}
 
