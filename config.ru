@@ -2,6 +2,8 @@ require 'sinatra'
 require './game.rb'
 
 
+board = ["_","_","_","_","_","_","_","_","_"]
+
 game = {
   "player1": "",
   "player2": "",
@@ -22,7 +24,8 @@ end
 
 post '/' do
   # raise(InvalidTokenError) unless params[:token] == ENV['SLACK_TOKEN']
-  puts "[LOG] #{params}"
+  puts "[LOG - params] #{params}"
+  puts "[LOG - board] #{board}"
   user = params.fetch('user_name')
   text = params.fetch('text').strip
   token = params.fetch('token')
@@ -60,6 +63,14 @@ post '/' do
     'Unknown command :cry:. Please type "/slacktactoe help" for more info.'
 
   end
+end
+
+
+
+def draw_board()
+  puts "  #{board[0]}  |  #{board[1]}  |  #{board[2]}  "
+  puts "  #{board[3]}  |  #{board[4]}  |  #{board[5]}  "
+  puts "  #{board[6]}  |  #{board[7]}  |  #{board[8]}  "
 end
 
 
