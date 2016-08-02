@@ -10,6 +10,17 @@ class Game
 end
 current_game = Game.new("me", "you")
 
+
+def draw_board()
+    # <<-TEXT
+    #   #{board[0]}  |  #{board[1]}  |  #{board[2]}
+    #   #{board[3]}  |  #{board[4]}  |  #{board[5]}
+    #   #{board[6]}  |  #{board[7]}  |  #{board[8]}
+    # TEXT
+    "from function"
+end
+
+
 InvalidTokenError = Class.new(Exception)
 
 get '/' do
@@ -80,17 +91,6 @@ post '/' do
     'Unknown command :cry:. Please type "/slacktactoe help" for more info.'
   end
 
-end
-
-
-
-def draw_board()
-    # <<-TEXT
-    #   #{board[0]}  |  #{board[1]}  |  #{board[2]}
-    #   #{board[3]}  |  #{board[4]}  |  #{board[5]}
-    #   #{board[6]}  |  #{board[7]}  |  #{board[8]}
-    # TEXT
-    "from function"
 end
 
 run Sinatra::Application
