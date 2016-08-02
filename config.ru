@@ -14,10 +14,10 @@ InvalidTokenError = Class.new(Exception)
 
 get '/' do
     <<-TEXT
-      This is a sample get route that I will use to test some variables, dependencies, etc.
-      #{current_game.player1} \n
-      #{current_game.player2} \n
-      #{current_game.board} \n
+      This is a sample get route that I will use to test some variables, dependencies, etc. \n
+      Player1: #{current_game.player1} \n
+      Player2: #{current_game.player2} \n
+      Board: #{current_game.board} \n
     TEXT
 end
 
@@ -26,17 +26,30 @@ post '/' do
   user = params.fetch('user_name')
   text = params.fetch('text').strip.split(" ")
   command = text[0]
-  # arguement = text[1]
   raise(InvalidTokenError) unless token == ENV['SLACK_TOKEN']
 
   case command
 
   when 'create'
-    opponent = "tbd"
-    # current_game = Game.new(user, opponent)
-    <<-TEXT
-      Hi there, #{user}, you have chosen to create a new game against #{opponent}!
-    TEXT
+    if text.length != 2
+      <<-TEXT
+        You've input the create command incorrectly. It should be '/slacktactoe create opponentsUsername'
+      TEXT
+    else
+      opponent = text[1]
+      current_game = Game.new(user, opponent)
+      <<-TEXT
+        Hi #{user}, you have chosen to create a new game against #{opponent}! \n
+        Let's begin. \n
+        #{draw_board} \n
+
+        _    _    _ \n
+        _    _    _ \n
+        _    _    _ \n
+
+
+      TEXT
+    end
 
   when 'display'
     board = current_game.board
@@ -72,11 +85,12 @@ end
 
 
 def draw_board()
-    <<-TEXT
-      #{board[0]}  |  #{board[1]}  |  #{board[2]}
-      #{board[3]}  |  #{board[4]}  |  #{board[5]}
-      #{board[6]}  |  #{board[7]}  |  #{board[8]}
-    TEXT
+    # <<-TEXT
+    #   #{board[0]}  |  #{board[1]}  |  #{board[2]}
+    #   #{board[3]}  |  #{board[4]}  |  #{board[5]}
+    #   #{board[6]}  |  #{board[7]}  |  #{board[8]}
+    # TEXT
+    "from function"
 end
 
 run Sinatra::Application
