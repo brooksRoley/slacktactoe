@@ -1,9 +1,9 @@
 require 'sinatra'
 
 game = {
-  "player1": "",
-  "player2": "",
-  "board": ["_","_","_","_","_","_","_","_","_"]
+  :player1: "",
+  :player2: "",
+  :board: ["_","_","_","_","_","_","_","_","_"]
 }
 
 
@@ -17,13 +17,12 @@ end
 
 post '/' do
   puts "[LOG - game] #{game}"
+  puts "[LOG - board] #{game[:board]}"
+
   user = params.fetch('user_name')
   text = params.fetch('text').strip
   token = params.fetch('token')
   # raise(InvalidTokenError) unless token == ENV['SLACK_TOKEN']
-  body = {
-    "this is a test": "to json"
-  }
   case text
 
   when 'create'
@@ -59,7 +58,6 @@ post '/' do
     'Unknown command :cry:. Please type "/slacktactoe help" for more info.'
   end
 
-  body.to_json
 end
 
 
