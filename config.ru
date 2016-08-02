@@ -18,7 +18,7 @@ end
 post '/' do
   # raise(InvalidTokenError) unless params[:token] == ENV['SLACK_TOKEN']
   puts "[LOG - params] #{params}"
-  puts "[LOG - game] #{game}"
+  draw_board
   user = params.fetch('user_name')
   text = params.fetch('text').strip
   token = params.fetch('token')
@@ -59,5 +59,11 @@ post '/' do
 end
 
 
+
+def draw_board()
+  puts "  #{board[0]}  |  #{board[1]}  |  #{board[2]}  "
+  puts "  #{board[3]}  |  #{board[4]}  |  #{board[5]}  "
+  puts "  #{board[6]}  |  #{board[7]}  |  #{board[8]}  "
+end
 
 run Sinatra::Application
