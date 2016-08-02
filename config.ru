@@ -30,18 +30,18 @@ post '/' do
 
   case command
 
-  when 'create'
+  when 'challenge'
     if text.length != 2
       <<-TEXT
         You've input the create command incorrectly. It should be '/slacktactoe create opponentsUsername'
       TEXT
     else
       opponent = text[1]
-      current_game = Game.new(user, opponent)
+      # current_game = Game.new(user, opponent)
+        # {draw_board} \n
       <<-TEXT
         Hi #{user}, you have chosen to create a new game against #{opponent}! \n
         Let's begin. \n
-        #{draw_board} \n
 
         _    _    _ \n
         _    _    _ \n

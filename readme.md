@@ -6,7 +6,7 @@ It was written with the help of [this blog post](http://wearestac.com/blog/build
 
 The application has been deployed to heroku under the URL of https://slacktactoe.herokuapp.com/ and configured in Slack so that it can be accessed like so:
 
-* `/slacktactoe create` - This will start a new game
+* `/slacktactoe challenge` - This will start a new game
 * `/slacktactoe display` - This will display the current state of the board
 * `/slacktactoe move :move` - This will take a location on the board numbered 1-9 where 1 is the upper left and 9 is the bottom right.
 * `/slacktactoe display` - This will display the current state of the board
