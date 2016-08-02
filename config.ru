@@ -25,7 +25,6 @@ end
 post '/' do
   # raise(InvalidTokenError) unless params[:token] == ENV['SLACK_TOKEN']
   puts "[LOG - params] #{params}"
-  puts "[LOG - board] #{board}"
   user = params.fetch('user_name')
   text = params.fetch('text').strip
   token = params.fetch('token')
