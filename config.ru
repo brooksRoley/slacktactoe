@@ -11,15 +11,6 @@ end
 current_game = Game.new("me", "you")
 
 
-def draw_board()
-    # <<-TEXT
-    #   #{board[0]}  |  #{board[1]}  |  #{board[2]}
-    #   #{board[3]}  |  #{board[4]}  |  #{board[5]}
-    #   #{board[6]}  |  #{board[7]}  |  #{board[8]}
-    # TEXT
-    "from function"
-end
-
 
 InvalidTokenError = Class.new(Exception)
 
@@ -33,6 +24,10 @@ get '/' do
 end
 
 post '/' do
+
+  def draw_board()
+      "from function"
+  end
   token = params.fetch('token')
   user = params.fetch('user_name')
   text = params.fetch('text').strip.split(" ")
