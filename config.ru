@@ -14,19 +14,19 @@ InvalidTokenError = Class.new(Exception)
 get '/' do
     # puts "[LOG] #{params}"
     # token = params.fetch('token')
-    # <<-TEXT
-    #   This is a sample get route that I will use to test some variables, dependencies, etc. \n
-    #   So, we need an ENV property for SLACK_TOKEN -> #{ENV['SLACK_TOKEN']}
-    #   We need a parameter value of the token #{token} or #{params[:token]}
-    # TEXT
+    <<-TEXT
+      This is a sample get route that I will use to test some variables, dependencies, etc. \n
+      So, we need an ENV property for SLACK_TOKEN -> #{ENV['SLACK_TOKEN']}
+      We need a parameter value of the token #{params[:token]}
+    TEXT
 end
 
 post '/' do
   # raise(InvalidTokenError) unless params[:token] == ENV['SLACK_TOKEN']
-  # puts "[LOG] #{params}"
+  puts "[LOG] #{params}"
   user = params.fetch('user_name')
   text = params.fetch('text').strip
-  # token = params.fetch('token')
+  token = params.fetch('token')
 
   case text
 
