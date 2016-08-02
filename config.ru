@@ -16,15 +16,10 @@ get '/' do
 end
 
 post '/' do
-  # puts "[LOG - params] #{params}"
   puts "[LOG - game] #{game}"
   user = params.fetch('user_name')
   text = params.fetch('text').strip
   token = params.fetch('token')
-  body = {
-    "this is ": "a test to see what things",
-    "will": "act like what"
-  }
   raise(InvalidTokenError) unless token == ENV['SLACK_TOKEN']
 
   case text
@@ -61,8 +56,6 @@ post '/' do
 
     'Unknown command :cry:. Please type "/slacktactoe help" for more info.'
   end
-
-  body
 end
 
 
