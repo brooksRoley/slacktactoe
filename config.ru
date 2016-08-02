@@ -20,7 +20,11 @@ post '/' do
   user = params.fetch('user_name')
   text = params.fetch('text').strip
   token = params.fetch('token')
-  raise(InvalidTokenError) unless token == ENV['SLACK_TOKEN']
+  # raise(InvalidTokenError) unless token == ENV['SLACK_TOKEN']
+  body = {
+    "this is ": "a test to see what things",
+    "will": "act like what"
+  }
 
   case text
 
@@ -56,6 +60,8 @@ post '/' do
 
     'Unknown command :cry:. Please type "/slacktactoe help" for more info.'
   end
+
+  body
 end
 
 
