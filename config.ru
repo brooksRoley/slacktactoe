@@ -13,7 +13,7 @@ InvalidTokenError = Class.new(Exception)
 get '/' do
     token = params.fetch('token')
 
-    foreach params do |x|
+    params.each do |x|
         <<-TEXT
           #{x}
         TEXT
