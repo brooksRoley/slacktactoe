@@ -22,13 +22,16 @@ get '/' do
 end
 
 post '/' do
+  token = params.fetch('token')
   user = params.fetch('user_name')
   text = params.fetch('text').strip
+  puts "pizza"
+  puts ENV['SLACK_TOKEN']
+  puts token
   # .split(" ")
   # command = text[0]
   # arguement = text[1]
-  token = params.fetch('token')
-  raise(InvalidTokenError) unless token == ENV['SLACK_TOKEN']
+  # raise(InvalidTokenError) unless token == ENV['SLACK_TOKEN']
 
   case text
 
