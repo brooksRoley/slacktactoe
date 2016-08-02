@@ -1,15 +1,13 @@
-# Slack Bot Example
+# SlackTacToe
 
-This is a [Slack](https://slack.com) bot example written in Sinatra. It was written for [this blog post](http://wearestac.com/blog/building-a-slack-slash-command-with-sinatra-finch-and-heroku).
+This is a [Slack](https://slack.com) bot example written in Sinatra.
 
-Deploy the application to your host of choice and configure it in Slack like so:
+It was written with the help of [this blog post](http://wearestac.com/blog/building-a-slack-slash-command-with-sinatra-finch-and-heroku).
 
-![Setup](setup.png)
+The application has been deployed to heroku under the URL of https://slacktactoe.herokuapp.com/ and configured in Slack so that it can be accessed like so:
 
-It's a very basic application, usage is as follows:
-
-* `/hey when` - When is the next event
-* `/hey what` - Who is speaking at the next event
-* `/hey unsupportedcommand` - Respond to missing commands with a friendly error message
-
-For more information, [read the blog post](http://wearestac.com/blog/building-a-slack-slash-command-with-sinatra-finch-and-heroku).
+* `/slacktactoe create` - This will start a new game
+* `/slacktactoe display` - This will display the current state of the board
+* `/slacktactoe move :move` - This will take a location on the board numbered 1-9 where 1 is the upper left and 9 is the bottom right.
+* `/slacktactoe display` - This will display the current state of the board
+* `/slacktactoe unsupportedcommand` - Respond to missing commands with a friendly error message
