@@ -1,5 +1,5 @@
 require 'sinatra'
-# require './game.rb'
+require './game.rb'
 
 
 game = {
