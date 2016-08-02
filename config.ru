@@ -48,6 +48,7 @@ post '/' do
       TEXT
     else
       opponent = text[1]
+      current_game = Game.new(user, opponent)
       <<-TEXT
         Hi #{user}, you have chosen to create a new game against #{opponent}! \n
         Let's begin. \n
