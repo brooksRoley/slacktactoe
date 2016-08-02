@@ -32,11 +32,10 @@ post '/' do
     TEXT
 
   when 'display'
-    board = draw_board()
-    puts "pizza"
-    puts board
     <<-TEXT
-      #{board}
+    #{board[0]}  |  #{board[1]}  |  #{board[2]} \n
+    #{board[3]}  |  #{board[4]}  |  #{board[5]} \n
+    #{board[6]}  |  #{board[7]}  |  #{board[8]} \n
       It is ____'s turn.
     TEXT
 
