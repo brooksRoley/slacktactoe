@@ -49,13 +49,15 @@ post '/' do
     else
       opponent = text[1]
       current_game = Game.new(user, opponent)
+      var = 1.to_s
       <<-TEXT
         Hi #{user}, you have chosen to create a new game against #{current_game.player2}! \n
         Let's begin. \n
+        Let's see if this works #{var}. \n
 
-        [  __    __    __  ]\n
-        [  __    __    __  ]\n
-        [  __    __    __  ]\n
+        [  #{current_game.board[0]}    #{current_game.board[0]}    #{current_game.board[0]}  ]\n
+        [  #{current_game.board[0]}    #{current_game.board[0]}    #{current_game.board[0]}  ]\n
+        [  #{current_game.board[0]}    #{current_game.board[0]}    #{current_game.board[0]}  ]\n
 
 
       TEXT
