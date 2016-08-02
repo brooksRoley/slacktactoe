@@ -33,6 +33,8 @@ post '/' do
 
   when 'display'
     board = draw_board()
+    puts "pizza"
+    puts board
     <<-TEXT
       #{board}
       It is ____'s turn.
