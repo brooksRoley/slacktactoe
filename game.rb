@@ -7,10 +7,3 @@ def say()
     And this is your board: #{board}
   TEXT
 end
-
-
-arr = [1,2,3]
-
-arr.each do |x|
-  puts x
-end
