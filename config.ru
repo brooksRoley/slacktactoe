@@ -33,11 +33,12 @@ post '/' do
 
   when 'display'
     board = game["board"]
+    puts "LOGS: #{board}"
+      # {board[0]}  |  #{board[1]}  |  #{board[2]}
+      # {board[3]}  |  #{board[4]}  |  #{board[5]}
+      # {board[6]}  |  #{board[7]}  |  #{board[8]}
     <<-TEXT
-      #{board[0]}  |  #{board[1]}  |  #{board[2]}
-      #{board[3]}  |  #{board[4]}  |  #{board[5]}
-      #{board[6]}  |  #{board[7]}  |  #{board[8]}
-
+      #{board}
       It is ____'s turn.
     TEXT
 
