@@ -32,9 +32,11 @@ post '/' do
     TEXT
 
   when 'display'
-    board = "Get the board somehow. Persist."
+    board = game["board"]
     <<-TEXT
-      The current state of your board is #{board}
+      #{board[0]}  |  #{board[1]}  |  #{board[2]}
+      #{board[3]}  |  #{board[4]}  |  #{board[5]}
+      #{board[6]}  |  #{board[7]}  |  #{board[8]}
 
       It is ____'s turn.
     TEXT
