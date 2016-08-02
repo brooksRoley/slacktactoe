@@ -1,6 +1,4 @@
 require 'sinatra'
-require './game.rb'
-
 
 game = {
   "player1": "",
@@ -19,7 +17,8 @@ end
 
 post '/' do
   # raise(InvalidTokenError) unless params[:token] == ENV['SLACK_TOKEN']
-  puts "[LOG] #{params}"
+  puts "[LOG - params] #{params}"
+  puts "[LOG - game] #{game}"
   user = params.fetch('user_name')
   text = params.fetch('text').strip
   token = params.fetch('token')
