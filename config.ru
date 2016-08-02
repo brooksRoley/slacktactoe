@@ -28,15 +28,15 @@ post '/' do
   # command = text[0]
   # arguement = text[1]
   token = params.fetch('token')
-  raise(InvalidTokenError) unless token == ENV['SLACK_TOKEN']
+  # raise(InvalidTokenError) unless token == ENV['SLACK_TOKEN']
 
   case text
 
   when 'create'
     opponent = "tbd"
-    current_game = Game.new(user, opponent)
+    # current_game = Game.new(user, opponent)
     <<-TEXT
-      Hi there, #{user}, you have chosen to create a new game against #{current_game.player2}!
+      Hi there, #{user}, you have chosen to create a new game against #{opponent}!
     TEXT
 
   when 'display'
