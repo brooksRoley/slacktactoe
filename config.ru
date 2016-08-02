@@ -28,7 +28,7 @@ post '/' do
   # command = text[0]
   # arguement = text[1]
   token = params.fetch('token')
-  # raise(InvalidTokenError) unless token == ENV['SLACK_TOKEN']
+  raise(InvalidTokenError) unless token == ENV['SLACK_TOKEN']
 
   case text
 
