@@ -21,11 +21,7 @@ post '/' do
   text = params.fetch('text').strip
   token = params.fetch('token')
   # raise(InvalidTokenError) unless token == ENV['SLACK_TOKEN']
-  body = {
-    "this is ": "a test to see what things",
-    "will": "act like what"
-  }
-
+  body = "this is a test"
   case text
 
   when 'create'
