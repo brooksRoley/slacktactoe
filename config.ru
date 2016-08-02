@@ -48,7 +48,6 @@ post '/' do
       TEXT
     else
       opponent = text[1]
-      board = draw_board()
       <<-TEXT
         Hi #{user}, you have chosen to create a new game against #{opponent}! \n
         Let's begin. \n
