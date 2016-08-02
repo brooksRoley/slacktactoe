@@ -61,9 +61,13 @@ end
 
 
 def draw_board()
-  puts "  #{board[0]}  |  #{board[1]}  |  #{board[2]}  "
-  puts "  #{board[3]}  |  #{board[4]}  |  #{board[5]}  "
-  puts "  #{board[6]}  |  #{board[7]}  |  #{board[8]}  "
+  puts "drawing board"
+  <<-TEXT
+    #{board[0]}  |  #{board[1]}  |  #{board[2]}
+    #{board[3]}  |  #{board[4]}  |  #{board[5]}
+    #{board[6]}  |  #{board[7]}  |  #{board[8]}
+  TEXT
+  return <<-TEXT pizza TEXT
 end
 
 run Sinatra::Application
