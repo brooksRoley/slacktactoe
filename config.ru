@@ -48,11 +48,12 @@ post '/' do
       TEXT
     else
       opponent = text[1]
-      # current_game = Game.new(user, opponent)
+      current_game = Game.new(user, opponent)
+      board = draw_board()
       <<-TEXT
-        Hi #{user}, you have chosen to create a new game against #{opponent}! \n
+        Hi #{user}, you have chosen to create a new game against #{current_game.opponent}! \n
         Let's begin. \n
-        #{draw_board} \n
+        #{board} \n
 
         [  __    __    __  ]\n
         [  __    __    __  ]\n
