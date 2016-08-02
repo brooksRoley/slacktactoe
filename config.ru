@@ -52,7 +52,6 @@ post '/' do
       <<-TEXT
         Hi #{user}, you have chosen to create a new game against #{opponent}! \n
         Let's begin. \n
-        #{board} \n
 
         [  __    __    __  ]\n
         [  __    __    __  ]\n
