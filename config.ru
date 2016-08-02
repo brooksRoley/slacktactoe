@@ -18,6 +18,7 @@ end
 post '/' do
   # raise(InvalidTokenError) unless params[:token] == ENV['SLACK_TOKEN']
   puts "[LOG - params] #{params}"
+  draw_board
   user = params.fetch('user_name')
   text = params.fetch('text').strip
   token = params.fetch('token')
@@ -32,10 +33,10 @@ post '/' do
     TEXT
 
   when 'display'
+    board = "Get the board somehow. Persist."
     <<-TEXT
-    #{board[0]}  |  #{board[1]}  |  #{board[2]} \n
-    #{board[3]}  |  #{board[4]}  |  #{board[5]} \n
-    #{board[6]}  |  #{board[7]}  |  #{board[8]} \n
+      The current state of your board is #{board}
+
       It is ____'s turn.
     TEXT
 
@@ -60,11 +61,12 @@ end
 
 
 def draw_board()
-  board_as_string = "
-    #{board[0]}  |  #{board[1]}  |  #{board[2]} \n
-    #{board[3]}  |  #{board[4]}  |  #{board[5]} \n
-    #{board[6]}  |  #{board[7]}  |  #{board[8]} \n"
-  return board_as_string
+  board = game["board"]
+  <<-TEXT
+    #{board[0]}  |  #{board[1]}  |  #{board[2]}
+    #{board[3]}  |  #{board[4]}  |  #{board[5]}
+    #{board[6]}  |  #{board[7]}  |  #{board[8]}
+  TEXT
 end
 
 run Sinatra::Application
