@@ -50,8 +50,8 @@ post '/' do
     end
 
   when 'display'
-
-    current_player = current_game.players[(turn-1)%2]
+    player = current_game.players[0]
+    # current_player = current_game.players[(turn-1)%2]
     # opponent_player = current_game.players[(turn)%2]
         # It is #{current_player}'s turn.
     <<-TEXT
