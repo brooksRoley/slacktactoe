@@ -68,8 +68,11 @@ post '/' do
         The number should be within the range of 1-9 where 1 corresponds to the top left square and 9 corresponds to the bottom right square.\n
         Like a phone... All telephones have the same number scheme, right? Hold on let me google it. Yeah, all telephones do use the same number scheme except for those cool guys with the circular dial.\n"
       TEXT
-    elsif user != current_game.players[(turn-1) % 2]
+    # elsif user != current_game.players[(turn-1) % 2]
+    elsif user != current_game.players[0]
       <<-TEXT
+        #{user} \n
+        #{current_game.players[0]} \n
         It is not your turn.
       TEXT
     else
