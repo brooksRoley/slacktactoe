@@ -60,41 +60,34 @@ post '/' do
         [  #{current_game.board[6]}    #{current_game.board[7]}    #{current_game.board[8]}  ]\n
     TEXT
 
-  when 'move'
-    if text.length != 2
+  when 'mark'
+    move_location = text[1].to_i
+    if move_location < 1 || move_location > 9
       <<-TEXT
         Invalid Input: You must type '/slacktactoe move number' \n
         The number should be within the range of 1-9 where 1 corresponds to the top left square and 9 corresponds to the bottom right square.\n
-        Like a phone. All telephones have the same number scheme, right? Hold on let me google it. Yeah, all telephones do use the same number scheme except for those cool guys with the circular dial.\n"
+        Like a phone... All telephones have the same number scheme, right? Hold on let me google it. Yeah, all telephones do use the same number scheme except for those cool guys with the circular dial.\n"
+      TEXT
+    elsif user != current_game.players[(turn-1) % 2]
+      <<-TEXT
+        It is not your turn.
       TEXT
     else
-      move_location = text[1]
+      pieces = ["X", "O"]
+      piece = pieces[current_game.turn % 2]
+      current_game.turn += 1
+      current_game.board[move_location-1] = piece
+      next_turn = current_game.players[(current_game.turn-1)%2]
       <<-TEXT
-        #{text[1]} \n
-        #{text[1].class} \n
+        It is now #{next_turn}'s Turn.
+        [  #{current_game.board[0]}    #{current_game.board[1]}    #{current_game.board[2]}  ]\n
+        [  #{current_game.board[3]}    #{current_game.board[4]}    #{current_game.board[5]}  ]\n
+        [  #{current_game.board[6]}    #{current_game.board[7]}    #{current_game.board[8]}  ]\n
       TEXT
-    # elsif text[1] < 1 || text[1] > 9
 
 
     end
-
-    # if user == "the user whose turn it is"
-    #   <<-TEXT
-    #     Users can specify their next move, which also publicly displays the board in the channel after the move with a reminder of whose turn it is.
-    #   TEXT
-    # else
-    #   <<-TEXT
-    #     It is not your turn.
-    #   TEXT
-    # end
-    # When a turn is taken that ends the game, the response indicates this along with who won.
-
-  when 'two words'
-    <<-TEXT
-      successfully saw two words, spaces are acceptable in text.
-    TEXT
   else
-
     'Unknown command :cry:. Please type "/slacktactoe help" for more info.'
   end
 

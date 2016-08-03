@@ -8,6 +8,6 @@ The application has been deployed to heroku under the URL of https://slacktactoe
 
 * `/slacktactoe challenge` - This will start a new game
 * `/slacktactoe display` - This will display the current state of the board
-* `/slacktactoe move :move` - This will take a location on the board numbered 1-9 where 1 is the upper left and 9 is the bottom right.
+* `/slacktactoe mark :mark` - This will take a location on the board numbered 1-9 where 1 is the upper left and 9 is the bottom right.
 * `/slacktactoe display` - This will display the current state of the board
 * `/slacktactoe unsupportedcommand` - Respond to missing commands with a friendly error message
