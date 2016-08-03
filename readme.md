@@ -23,3 +23,4 @@ Future Releases:
   https://api.slack.com/methods/users.list
 - Put the board into a database so the state persists across server shutdowns and restarts.
 - Refactor the mark route so as not to duplicate text code.
+- Write logic for a won or tied game that is smarter than wiping the board.
