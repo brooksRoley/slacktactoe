@@ -60,8 +60,9 @@ post '/' do
     turn = current_game.turn
     current_player = current_game.players[(turn-1)%2]
     opponent_player = current_game.players[(turn)%2]
+
     response = {
-       :response_type => "ephemeral",
+       :response_type => "in_channel",
        :text => "It is about to be turn #{turn}. #{current_player} will play against #{opponent_player}. \n
         [  #{current_game.board[0]}    #{current_game.board[1]}    #{current_game.board[2]}  ]\n
         [  #{current_game.board[3]}    #{current_game.board[4]}    #{current_game.board[5]}  ]\n

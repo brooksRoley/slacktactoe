@@ -2,7 +2,7 @@
 
 This is a [Slack](https://slack.com) bot example written in Sinatra that allows the user to play Tic Tac Toe in the channel. It was a coding challenge given to Brooks Roley for the position of Application Engineer at Slack.
 
-It was written with the help of [this blog post](http://wearestac.com/blog/building-a-slack-slash-command-with-sinatra-finch-and-heroku).
+It was written with the help of [this blog post](http://wearestac.com/blog/building-a-slack-slash-command-with-sinatra-finch-and-heroku). Additional thanks to [this blog's style guide](https://medium.com/slack-developer-blog/slash-commands-style-guide-4e91272aa43a#.lx5ecndad)
 
 The application has been deployed to heroku under the URL of https://slacktactoe.herokuapp.com/ and configured in my challenge's Slack channel.
 
