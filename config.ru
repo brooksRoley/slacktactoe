@@ -66,6 +66,16 @@ post '/' do
     [  #{current_game.board[3]}    #{current_game.board[4]}    #{current_game.board[5]}  ]\n
     [  #{current_game.board[6]}    #{current_game.board[7]}    #{current_game.board[8]}  ]\n"
 
+    {
+      "response_type": "in_channel",
+      "text": "It's 80 degrees right now.",
+      "attachments": [
+          {
+              "text":"Partly cloudy today and tomorrow"
+          }
+      ]
+    }
+
   when 'mark'
     move_location = text[1].to_i
     # puts "LOG Square- #{current_game.board[move_location-1]}"
