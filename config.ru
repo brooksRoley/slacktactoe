@@ -12,7 +12,7 @@ class Game
   end
 end
 
-current_game = Game.new("me", "you")
+current_game = Game.new("I", "you")
 InvalidTokenError = Class.new(Exception)
 
 get '/' do
@@ -68,15 +68,14 @@ post '/' do
 
   when 'mark'
     move_location = text[1].to_i
-    puts "LOG Square- #{current_game.board[move_location-1]}"
-    puts "LOG location- #{move_location-1}"
-    puts "LOG Board- #{current_game.board}"
-
+    # puts "LOG Square- #{current_game.board[move_location-1]}"
+    # puts "LOG location- #{move_location-1}"
+    # puts "LOG Board- #{current_game.board}"
     if move_location < 1 || move_location > 9
       <<-TEXT
         Invalid Input: You must type '/slacktactoe mark number' \n
-        The number should be within the range of 1-9 where 1 corresponds to the top left square and 9 corresponds to the bottom right square.\n
-        Like a phone... All telephones have the same number scheme, right? Hold on let me google it. Yeah, all telephones do use the same number scheme except for those cool guys with the circular dial.\n"
+      The number should be within the range of 1-9 where 1 corresponds to the top left square and 9 corresponds to the bottom right square.\n
+      Like a phone... All telephones have the same number scheme, right? Hold on let me google it. Yeah, all telephones do use the same number scheme except for those cool guys with the circular dial.\n
       TEXT
     elsif user != current_game.players[(current_game.turn-1) % 2]
       <<-TEXT
@@ -91,20 +90,20 @@ post '/' do
       piece = current_game.pieces[current_game.turn % 2]
       current_game.board[move_location-1] = piece
       did_win =
-        [board[0], board[1], board[2]].all?{|x| x==piece} ||
-        [board[3], board[4], board[5]].all?{|x| x==piece} ||
-        [board[6], board[7], board[8]].all?{|x| x==piece} ||
-        [board[0], board[3], board[6]].all?{|x| x==piece} ||
-        [board[1], board[4], board[7]].all?{|x| x==piece} ||
-        [board[2], board[5], board[8]].all?{|x| x==piece} ||
-        [board[0], board[4], board[8]].all?{|x| x==piece} ||
-        [board[6], board[4], board[2]].all?{|x| x==piece}
+        [current_game.board[0], current_game.board[1], current_game.board[2]].all?{|x| x==piece} ||
+        [current_game.board[3], current_game.board[4], current_game.board[5]].all?{|x| x==piece} ||
+        [current_game.board[6], current_game.board[7], current_game.board[8]].all?{|x| x==piece} ||
+        [current_game.board[0], current_game.board[3], current_game.board[6]].all?{|x| x==piece} ||
+        [current_game.board[1], current_game.board[4], current_game.board[7]].all?{|x| x==piece} ||
+        [current_game.board[2], current_game.board[5], current_game.board[8]].all?{|x| x==piece} ||
+        [current_game.board[0], current_game.board[4], current_game.board[8]].all?{|x| x==piece} ||
+        [current_game.board[6], current_game.board[4], current_game.board[2]].all?{|x| x==piece}
+
       if did_win
         current_player = current_game.players[(current_game.turn)%2]
         <<-TEXT
           Congratulations, #{current_player}, on a well fought win. \n
         TEXT
-
       elsif current_game.turn > 9
         <<-TEXT
           The game has ended as a tie. You may restart using the 'challenge' command. \n

@@ -21,3 +21,4 @@ Future Releases:
   This would move the pieces array onto the game object and create a command to set this to an ascii character.
 - Use the 'user.list' to make sure the person you challenge is indeed a user of the channel.
   https://api.slack.com/methods/users.list
+- Put the board into a database so the state persists across server shutdowns and restarts.
