@@ -103,25 +103,30 @@ post '/' do
         current_player = current_game.players[(current_game.turn)%2]
         <<-TEXT
           Congratulations, #{current_player}, on a well fought win. \n
+        Turn: #{current_game.turn-1} \n
+        [  #{current_game.board[0]}    #{current_game.board[1]}    #{current_game.board[2]}  ]\n
+        [  #{current_game.board[3]}    #{current_game.board[4]}    #{current_game.board[5]}  ]\n
+        [  #{current_game.board[6]}    #{current_game.board[7]}    #{current_game.board[8]}  ]\n
         TEXT
       elsif current_game.turn > 9
         <<-TEXT
           The game has ended as a tie. You may restart using the 'challenge' command. \n
+        Turn: #{current_game.turn-1} \n
+        [  #{current_game.board[0]}    #{current_game.board[1]}    #{current_game.board[2]}  ]\n
+        [  #{current_game.board[3]}    #{current_game.board[4]}    #{current_game.board[5]}  ]\n
+        [  #{current_game.board[6]}    #{current_game.board[7]}    #{current_game.board[8]}  ]\n
         TEXT
       else
         current_game.turn += 1
         next_turn = current_game.players[(current_game.turn-1)%2]
         <<-TEXT
           It is now #{next_turn}'s turn. \n
-
-        TEXT
-      end
-      <<-TEXT
-        Turn: #{current_game.turn-1}
+        Turn: #{current_game.turn-1} \n
         [  #{current_game.board[0]}    #{current_game.board[1]}    #{current_game.board[2]}  ]\n
         [  #{current_game.board[3]}    #{current_game.board[4]}    #{current_game.board[5]}  ]\n
         [  #{current_game.board[6]}    #{current_game.board[7]}    #{current_game.board[8]}  ]\n
-      TEXT
+        TEXT
+      end
     end
 
   when 'help'

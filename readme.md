@@ -22,3 +22,4 @@ Future Releases:
 - Use the 'user.list' to make sure the person you challenge is indeed a user of the channel.
   https://api.slack.com/methods/users.list
 - Put the board into a database so the state persists across server shutdowns and restarts.
+- Refactor the mark route so as not to duplicate text code.
