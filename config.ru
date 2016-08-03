@@ -105,7 +105,7 @@ post '/' do
         response = {
           :response_type => "in_channel",
           :text => "Congratulations #{current_player}!, on a well fought win. \n
-        Turn: #{current_game.turn-1} \n
+        Turn: #{current_game.turn} \n
         Soak it in because this board is about to be wiped. \n
           [  #{current_game.board[0]}    #{current_game.board[1]}    #{current_game.board[2]}  ]\n
           [  #{current_game.board[3]}    #{current_game.board[4]}    #{current_game.board[5]}  ]\n
