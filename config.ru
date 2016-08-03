@@ -60,7 +60,7 @@ post '/' do
     current_player = current_game.players[(turn-1)%2]
     opponent_player = current_game.players[(turn)%2]
     <<-TEXT
-      It is currently #{current_player}'s turn playing against #{opponent_player}. \n
+      It is currently turn #{turn}. #{current_player} will play against #{opponent_player}. \n
         [  #{current_game.board[0]}    #{current_game.board[1]}    #{current_game.board[2]}  ]\n
         [  #{current_game.board[3]}    #{current_game.board[4]}    #{current_game.board[5]}  ]\n
         [  #{current_game.board[6]}    #{current_game.board[7]}    #{current_game.board[8]}  ]\n
@@ -90,7 +90,15 @@ post '/' do
     else
       piece = current_game.pieces[current_game.turn % 2]
       current_game.board[move_location-1] = piece
-      did_win = %w[board[0], board[1], board[2]].all?{|x| x==piece} or %w[board[3],  board[4], board[5]].all?{|x| x==piece} or %w[board[6], board[7], board[8]].all?{|x| x==piece} or %w[board[0], board[3], board[6]].all?{|x| x==piece} or %w[board[1], board[4], board[7]].all?{|x| x==piece} or %w[board[2], board[5],  board[8]].all?{|x| x==piece} or %w[board[0], board[4], board[8]].all?{|x| x==piece} or %w[board[6], board[4], board[2]].all?{|x| x==piece}
+      did_win =
+        [board[0], board[1], board[2]].all?{|x| x==piece} ||
+        [board[3], board[4], board[5]].all?{|x| x==piece} ||
+        [board[6], board[7], board[8]].all?{|x| x==piece} ||
+        [board[0], board[3], board[6]].all?{|x| x==piece} ||
+        [board[1], board[4], board[7]].all?{|x| x==piece} ||
+        [board[2], board[5], board[8]].all?{|x| x==piece} ||
+        [board[0], board[4], board[8]].all?{|x| x==piece} ||
+        [board[6], board[4], board[2]].all?{|x| x==piece}
       if did_win
         current_player = current_game.players[(current_game.turn)%2]
         <<-TEXT
