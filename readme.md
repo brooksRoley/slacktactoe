@@ -27,7 +27,7 @@ Future Releases:
 - Write logic for a won or tied game that is smarter than wiping the board.
 - Figure out why function calls within config.ru cause a SIGTERM.
 - Create a scoreboard to track how many wins/draws/losses each member of the channel has.
-
+- Implement a simple AI so that the channel can play back.
 
 
 List of tests to meet requirements:

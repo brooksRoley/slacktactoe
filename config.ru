@@ -29,12 +29,12 @@ get '/' do
 end
 
 post '/' do
+  content_type :json
   token = params.fetch('token')
   raise(InvalidTokenError) unless token == ENV['SLACK_TOKEN']
   user = params.fetch('user_name')
   text = params.fetch('text').strip.split(" ")
   command = text[0]
-  content_type :json
 
   case command
 
@@ -47,13 +47,12 @@ post '/' do
       current_game = Game.new(user, opponent)
       response = {
         :response_type => "in_channel",
-        :text => "Hi #{user}, you have chosen to create a new game against #{current_game.players[1]}! \n
-        Because you have cast the gauntlet, you will play first. Let's begin. \n
+        :text => "#{user}, you have chosen to create a new game against #{current_game.players[1]}!\n
+      Because you have cast the gauntlet, you will play first. Let's begin. \n
         [  #{current_game.board[0]}    #{current_game.board[1]}    #{current_game.board[2]}  ]\n
         [  #{current_game.board[3]}    #{current_game.board[4]}    #{current_game.board[5]}  ]\n
         [  #{current_game.board[6]}    #{current_game.board[7]}    #{current_game.board[8]}  ]\n"
       }.to_json
-
     end
 
   when 'display'
@@ -113,7 +112,7 @@ post '/' do
         }.to_json
         current_game = Game.new("I", "You")
 
-      elsif current_game.turn > 9
+      elsif current_game.turn >= 9
         response = {
           :response_type => "in_channel",
           :text => "The game has ended as a tie. You may restart using the 'challenge' command. \n
@@ -130,7 +129,7 @@ post '/' do
         response = {
           :response_type => "in_channel",
           :text => "It is now #{next_turn}'s turn. \n
-            Turn: #{current_game.turn-1} \n
+        Turn: #{current_game.turn-1} \n
             [  #{current_game.board[0]}    #{current_game.board[1]}    #{current_game.board[2]}  ]\n
             [  #{current_game.board[3]}    #{current_game.board[4]}    #{current_game.board[5]}  ]\n
             [  #{current_game.board[6]}    #{current_game.board[7]}    #{current_game.board[8]}  ]\n"
