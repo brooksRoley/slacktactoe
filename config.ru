@@ -40,7 +40,7 @@ post '/' do
 
   when 'challenge'
     if text.length != 2
-       {:text => 'You've input the challenge command incorrectly. It should be '/slacktactoe challenge opponentsUsername'}.to_json
+       {:text => "You've input the challenge command incorrectly. It should be '/slacktactoe challenge opponentsUsername"}.to_json
     else
       opponent = text[1]
       current_game = Game.new(user, opponent)
