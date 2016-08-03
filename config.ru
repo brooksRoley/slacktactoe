@@ -117,7 +117,7 @@ post '/' do
         response = {
           :response_type => "in_channel",
           :text => "The game has ended as a tie. You may restart using the 'challenge' command. \n
-            Turn: #{current_game.turn-1} \n
+            Turn: #{current_game.turn} \n
             [  #{current_game.board[0]}    #{current_game.board[1]}    #{current_game.board[2]}  ]\n
             [  #{current_game.board[3]}    #{current_game.board[4]}    #{current_game.board[5]}  ]\n
             [  #{current_game.board[6]}    #{current_game.board[7]}    #{current_game.board[8]}  ]\n"
