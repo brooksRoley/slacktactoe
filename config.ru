@@ -73,8 +73,8 @@ post '/' do
     if move_location < 1 || move_location > 9
       response = {
         :text => "Invalid Input: You must type '/slacktactoe mark number' \n
-          The number should be within the range of 1-9 where 1 corresponds to the top left square and 9 corresponds to the bottom right square.\n
-          Like a phone... All telephones have the same number scheme, right? Hold on let me google it. Yeah, all telephones do use the same number scheme except for those cool guys with the circular dial.\n"
+      The number should be within the range of 1-9 where 1 corresponds to the top left square and 9 corresponds to the bottom right square.\n
+      Like a phone... All telephones have the same number scheme, right? Hold on let me google it. Yeah, all telephones do use the same number scheme except for those cool guys with the circular dial.\n"
       }.to_json
 
     elsif user != current_game.players[(current_game.turn-1) % 2]
@@ -104,8 +104,9 @@ post '/' do
         current_player = current_game.players[(current_game.turn)%2]
         response = {
           :response_type => "in_channel",
-          :text => "Congratulations, #{current_player}, on a well fought win. \n
-          Turn: #{current_game.turn-1} \n
+          :text => "Congratulations #{current_player}!, on a well fought win. \n
+        Turn: #{current_game.turn-1} \n
+        Soak it in because this board is about to be wiped. \n
           [  #{current_game.board[0]}    #{current_game.board[1]}    #{current_game.board[2]}  ]\n
           [  #{current_game.board[3]}    #{current_game.board[4]}    #{current_game.board[5]}  ]\n
           [  #{current_game.board[6]}    #{current_game.board[7]}    #{current_game.board[8]}  ]\n"
@@ -122,7 +123,6 @@ post '/' do
             [  #{current_game.board[6]}    #{current_game.board[7]}    #{current_game.board[8]}  ]\n"
         }.to_json
         current_game = Game.new("I", "You")
-
       else
         current_game.turn += 1
         next_turn = current_game.players[(current_game.turn-1)%2]
@@ -141,12 +141,13 @@ post '/' do
 
   when 'help'
     <<-TEXT
-    * `/slacktactoe challenge :opponent's_username` - This will start a new game
-    * `/slacktactoe display` - This will display the current state of the board
-    * `/slacktactoe mark :square` - This will take a location on the board numbered 1-9 where 1 is the upper left and 9 is the bottom right.
-    * `/slacktactoe help` - You seem to know how this one works.
-    * `/slacktactoe unsupportedcommand` - Respond to missing commands with a friendly error message
+  * `/slacktactoe challenge :opponent's_username` - This will start a new game
+  * `/slacktactoe display` - This will display the current state of the board
+  * `/slacktactoe mark :square` - This will take a location on the board numbered 1-9 where 1 is the upper left and 9 is the bottom right.
+  * `/slacktactoe help` - You seem to know how this one works.
+  * `/slacktactoe :unsupportedcommand` - Respond to missing commands with a friendly error message
     TEXT
+
   else
     'Unknown command :cry:. Please type "/slacktactoe help" for more info.'
   end
