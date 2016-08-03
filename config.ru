@@ -25,7 +25,6 @@ get '/' do
       [  #{current_game.board[0]}    #{current_game.board[1]}    #{current_game.board[2]}  ]\n
       [  #{current_game.board[3]}    #{current_game.board[4]}    #{current_game.board[5]}  ]\n
       [  #{current_game.board[6]}    #{current_game.board[7]}    #{current_game.board[8]}  ]\n
-
     TEXT
 end
 
@@ -35,14 +34,13 @@ post '/' do
   user = params.fetch('user_name')
   text = params.fetch('text').strip.split(" ")
   command = text[0]
+  content_type :json
 
   case command
 
   when 'challenge'
     if text.length != 2
-      <<-TEXT
-        You've input the challenge command incorrectly. It should be '/slacktactoe challenge opponentsUsername'
-      TEXT
+       {:text => 'You've input the challenge command incorrectly. It should be '/slacktactoe challenge opponentsUsername'}.to_json
     else
       opponent = text[1]
       current_game = Game.new(user, opponent)
@@ -61,8 +59,7 @@ post '/' do
     current_player = current_game.players[(turn-1)%2]
     opponent_player = current_game.players[(turn)%2]
 
-    content_type :json
-    {:text =>"#{response}: It is about to be turn #{turn}. #{current_player} will play against #{opponent_player}.\n
+    {:text =>"It is about to be turn #{turn}. #{current_player} will play against #{opponent_player}.\n
     [  #{current_game.board[0]}    #{current_game.board[1]}    #{current_game.board[2]}  ]\n
     [  #{current_game.board[3]}    #{current_game.board[4]}    #{current_game.board[5]}  ]\n
     [  #{current_game.board[6]}    #{current_game.board[7]}    #{current_game.board[8]}  ]\n",
