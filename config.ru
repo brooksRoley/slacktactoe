@@ -61,15 +61,32 @@ post '/' do
     TEXT
 
   when 'move'
-    if user == "the user whose turn it is"
+    if text.length != 2
       <<-TEXT
-        Users can specify their next move, which also publicly displays the board in the channel after the move with a reminder of whose turn it is.
+        Invalid Input: You must type '/slacktactoe move number' \n
+        The number should be within the range of 1-9 where 1 corresponds to the top left square and 9 corresponds to the bottom right square.\n
+        Like a phone. All telephones have the same number scheme, right? Hold on let me google it. Yeah, all telephones do use the same number scheme except for those cool guys with the circular dial.\n"
       TEXT
     else
+      move_location = text[1]
       <<-TEXT
-        It is not your turn.
+        #{text[1]} \n
+        #{text[1].class} \n
       TEXT
+    # elsif text[1] < 1 || text[1] > 9
+
+
     end
+
+    # if user == "the user whose turn it is"
+    #   <<-TEXT
+    #     Users can specify their next move, which also publicly displays the board in the channel after the move with a reminder of whose turn it is.
+    #   TEXT
+    # else
+    #   <<-TEXT
+    #     It is not your turn.
+    #   TEXT
+    # end
     # When a turn is taken that ends the game, the response indicates this along with who won.
 
   when 'two words'
