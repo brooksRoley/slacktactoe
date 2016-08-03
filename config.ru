@@ -61,13 +61,10 @@ post '/' do
     current_player = current_game.players[(turn-1)%2]
     opponent_player = current_game.players[(turn)%2]
 
-    {
-       :response_type => "in_channel",
-       :text => "It is about to be turn #{turn}. #{current_player} will play against #{opponent_player}. \n
-                [  #{current_game.board[0]}    #{current_game.board[1]}    #{current_game.board[2]}  ]\n
-                [  #{current_game.board[3]}    #{current_game.board[4]}    #{current_game.board[5]}  ]\n
-                [  #{current_game.board[6]}    #{current_game.board[7]}    #{current_game.board[8]}  ]\n"
-    }
+    "It is about to be turn #{turn}. #{current_player} will play against #{opponent_player}.\n
+    [  #{current_game.board[0]}    #{current_game.board[1]}    #{current_game.board[2]}  ]\n
+    [  #{current_game.board[3]}    #{current_game.board[4]}    #{current_game.board[5]}  ]\n
+    [  #{current_game.board[6]}    #{current_game.board[7]}    #{current_game.board[8]}  ]\n"
 
   when 'mark'
     move_location = text[1].to_i
