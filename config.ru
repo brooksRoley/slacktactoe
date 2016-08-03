@@ -61,14 +61,12 @@ post '/' do
     current_player = current_game.players[(turn-1)%2]
     opponent_player = current_game.players[(turn)%2]
 
-
-    "#{response}: It is about to be turn #{turn}. #{current_player} will play against #{opponent_player}.\n
+    content_type :json
+    {:text =>"#{response}: It is about to be turn #{turn}. #{current_player} will play against #{opponent_player}.\n
     [  #{current_game.board[0]}    #{current_game.board[1]}    #{current_game.board[2]}  ]\n
     [  #{current_game.board[3]}    #{current_game.board[4]}    #{current_game.board[5]}  ]\n
-    [  #{current_game.board[6]}    #{current_game.board[7]}    #{current_game.board[8]}  ]\n"
-
-    content_type :json
-    {:text => params[:text], :response_type => "in_channel"}.to_json
+    [  #{current_game.board[6]}    #{current_game.board[7]}    #{current_game.board[8]}  ]\n",
+    :response_type => "in_channel"}.to_json
 
   when 'mark'
     move_location = text[1].to_i
