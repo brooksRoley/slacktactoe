@@ -35,7 +35,7 @@ post '/' do
   when 'challenge'
     if text.length != 2
       <<-TEXT
-        You've input the create command incorrectly. It should be '/slacktactoe create opponentsUsername'
+        You've input the challenge command incorrectly. It should be '/slacktactoe challenge opponentsUsername'
       TEXT
     else
       opponent = text[1]
@@ -68,10 +68,10 @@ post '/' do
         The number should be within the range of 1-9 where 1 corresponds to the top left square and 9 corresponds to the bottom right square.\n
         Like a phone... All telephones have the same number scheme, right? Hold on let me google it. Yeah, all telephones do use the same number scheme except for those cool guys with the circular dial.\n"
       TEXT
-    # elsif user != current_game.players[(turn-1) % 2]
-    #   <<-TEXT
-    #     It is not your turn.
-    #   TEXT
+    elsif user != current_game.players[(turn-1) % 2]
+      <<-TEXT
+        It is not your turn.
+      TEXT
     else
     #   pieces = ["X", "O"]
     #   piece = pieces[current_game.turn % 2]
