@@ -62,8 +62,12 @@ post '/' do
     opponent_player = current_game.players[(turn)%2]
 
     puts "LOG _ RESPONSE #{response}"
+    puts "LOG _ RESPONSE #{response[:text]}"
+    puts "LOG _ RESPONSE #{response.text}"
+    puts "LOG _ RESPONSE #{response.status}"
+    puts "LOG _ RESPONSE #{response.fetch('response_type')}"
 
-    "It is about to be turn #{turn}. #{current_player} will play against #{opponent_player}.\n
+    "#{response}: It is about to be turn #{turn}. #{current_player} will play against #{opponent_player}.\n
     [  #{current_game.board[0]}    #{current_game.board[1]}    #{current_game.board[2]}  ]\n
     [  #{current_game.board[3]}    #{current_game.board[4]}    #{current_game.board[5]}  ]\n
     [  #{current_game.board[6]}    #{current_game.board[7]}    #{current_game.board[8]}  ]\n"
