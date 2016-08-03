@@ -67,7 +67,7 @@ post '/' do
                 [  #{current_game.board[0]}    #{current_game.board[1]}    #{current_game.board[2]}  ]\n
                 [  #{current_game.board[3]}    #{current_game.board[4]}    #{current_game.board[5]}  ]\n
                 [  #{current_game.board[6]}    #{current_game.board[7]}    #{current_game.board[8]}  ]\n"
-    }.to_json
+    }
 
   when 'mark'
     move_location = text[1].to_i
