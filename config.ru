@@ -68,6 +68,10 @@ post '/' do
 
   when 'mark'
     move_location = text[1].to_i
+    puts "LOG Square- #{current_game.board[move_location-1]}"
+    puts "LOG location- #{move_location-1}"
+    puts "LOG Board- #{current_game.board}"
+
     if move_location < 1 || move_location > 9
       <<-TEXT
         Invalid Input: You must type '/slacktactoe mark number' \n
