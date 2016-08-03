@@ -15,6 +15,7 @@ It can be accessed like so after the integration is added to a team's slack chan
 * `/slacktactoe unsupportedcommand` - Respond to missing commands with a friendly error message
 
 
+
 Future Releases:
 
 - Allow the user's to select their pieces instead of the default X and O.
@@ -26,3 +27,37 @@ Future Releases:
 - Write logic for a won or tied game that is smarter than wiping the board.
 - Figure out why function calls within config.ru cause a SIGTERM.
 - Create a scoreboard to track how many wins/draws/losses each member of the channel has.
+
+
+
+List of tests to meet requirements:
+1. Users can create a new game in any Slack channel by challenging another user (using their username).
+  /slacktactoe challenge opponent
+
+Note: Mentioned in the 'Future Release' notes, this could reference slack's user.list API to make sure the opponent exists.
+As of right now, if you incorrectly type in your opponent's name, you will have to create a new game as no player will be able to take that player's moves.
+
+2. A channel can have at most one game being played at a time.
+  /slacktactoe challenge different_opponent
+
+Note: I made the decision to overwrite the existing game if a user created a new game for a few reasons.
+This meets the single game requirement and user's can only complete a game if they input a real opponent's name. This allows them to rectify a mistake easily if they do not.
+
+3. Anyone in the channel can run a command to display the current board and list whose turn it is.
+  /slacktactoe display
+
+Note:
+
+4. Users can specify their next move, which also publicly displays the board in the channel after the move with a reminder of whose turn it is.
+
+Note:
+
+5. Only the user whose turn it is can make the next move.
+  /slacktactoe move 1
+
+Note:
+
+6. When a turn is taken that ends the game, the response indicates this along with who won.
+  /slacktactoe move [0,1,2]
+
+Note: There are 8 possible ways to win a game. The route will ouput the finishing board and a congratulatory message then reset the game state to before a challenge was posed.

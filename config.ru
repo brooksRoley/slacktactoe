@@ -45,14 +45,15 @@ post '/' do
     else
       opponent = text[1]
       current_game = Game.new(user, opponent)
-      <<-TEXT
-        Hi #{user}, you have chosen to create a new game against #{current_game.players[1]}! \n
-        Because you have cast the gauntlet, you will play first. \n
-        Let's begin. \n
+      response = {
+        :response_type => "in_channel",
+        :text => "Hi #{user}, you have chosen to create a new game against #{current_game.players[1]}! \n
+        Because you have cast the gauntlet, you will play first. Let's begin. \n
         [  #{current_game.board[0]}    #{current_game.board[1]}    #{current_game.board[2]}  ]\n
         [  #{current_game.board[3]}    #{current_game.board[4]}    #{current_game.board[5]}  ]\n
-        [  #{current_game.board[6]}    #{current_game.board[7]}    #{current_game.board[8]}  ]\n
-      TEXT
+        [  #{current_game.board[6]}    #{current_game.board[7]}    #{current_game.board[8]}  ]\n"
+      }.to_json
+
     end
 
   when 'display'
@@ -134,6 +135,7 @@ post '/' do
             [  #{current_game.board[3]}    #{current_game.board[4]}    #{current_game.board[5]}  ]\n
             [  #{current_game.board[6]}    #{current_game.board[7]}    #{current_game.board[8]}  ]\n"
         }.to_json
+
       end
       response
     end
