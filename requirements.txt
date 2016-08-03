@@ -1,0 +1,17 @@
+Slack Application Engineering: Technical Exercise Prompt
+https://slack-files.com/T024BE7LD-F0NJM55RV-cba031f54a
+Summary
+Use slash commands to create a game of tic-tac-toe within Slack. If you’re unfamiliar with the rules, check them out at https://en.wikipedia.org/wiki/Tic-tac-toe. The display as well as the slash command syntax the users must use is entirely up to you. We'd like to see where you take this basic idea!
+Requirements
+Users can create a new game in any Slack channel by challenging another user (using their username).
+A channel can have at most one game being played at a time.
+Anyone in the channel can run a command to display the current board and list whose turn it is.
+Users can specify their next move, which also publicly displays the board in the channel after the move with a reminder of whose turn it is.
+Only the user whose turn it is can make the next move.
+When a turn is taken that ends the game, the response indicates this along with who won.
+Procedures
+Check your e-mail for a Slack invite to a testing team where you can test and install your slash command. Please play one complete game in the #general channel so that we can see the history.
+Once submitted, we'll be using your slash command and trying out game play only on the testing team set up above (we won't be installing it on other teams).
+You can use any technologies of your choice. We will provide a server running a LAMP stack if you wish to get up and running quickly (just ask us via email), but also feel free to use your own server or other hosting services such as Heroku or Google App Engine.
+Please provide all source code via a Git repository – create a local repo for your code, and when the exercise is complete, please tar or zip your main directory and send it along to us (and please remember to include your .git directory/files).
+If you find that completing the exercise is taking more time than you'd reasonably expect, please let us know via email; we are happy to work with you. This is the primary way we evaluate your technical skills, so the finished product should be something you're proud to show us!
