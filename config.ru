@@ -47,6 +47,7 @@ post '/' do
       current_game = Game.new(user, opponent)
       <<-TEXT
         Hi #{user}, you have chosen to create a new game against #{current_game.players[1]}! \n
+        Because you have cast the gauntlet, you will play first. \n
         Let's begin. \n
         [  #{current_game.board[0]}    #{current_game.board[1]}    #{current_game.board[2]}  ]\n
         [  #{current_game.board[3]}    #{current_game.board[4]}    #{current_game.board[5]}  ]\n
@@ -78,7 +79,7 @@ post '/' do
         #{user}, it is not your turn.
       TEXT
 
-    elsif current_game.board[move_location-1] != "_"
+    elsif current_game.board[move_location-1] != "__"
       <<-TEXT
         Please input a square that is not already taken.
       TEXT

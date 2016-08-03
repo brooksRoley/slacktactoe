@@ -4,7 +4,9 @@ This is a [Slack](https://slack.com) bot example written in Sinatra that allows 
 
 It was written with the help of [this blog post](http://wearestac.com/blog/building-a-slack-slash-command-with-sinatra-finch-and-heroku).
 
-The application has been deployed to heroku under the URL of https://slacktactoe.herokuapp.com/ and configured in Slack so that it can be accessed like so after the integration is added to a team's slack channel:
+The application has been deployed to heroku under the URL of https://slacktactoe.herokuapp.com/ and configured in my challenge's Slack channel.
+
+It can be accessed like so after the integration is added to a team's slack channel:
 
 * `/slacktactoe challenge :opponent's_username` - This will start a new game
 * `/slacktactoe display` - This will display the current state of the board
